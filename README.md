@@ -11,7 +11,7 @@ Before getting started, check the [PRERESUISITES.md](./PRERESUISITES.md).
 1. **Clone the repository**:
    ```bash
    git clone <repository-url>
-   cd fusion25-prodev-lab
+   cd prodev-lab
    ```
 
 2. **Run prerequisites checker** (optional but recommended):
