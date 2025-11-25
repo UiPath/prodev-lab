@@ -37,7 +37,7 @@ Before getting started, check the [PRERESUISITES.md](./PRERESUISITES.md).
    ```bash
    uv init -p 3.11
    uv add ipykernel jupyter
-   uv run python -m ipykernel install --user --name=jupyter-uv-env --display-name "FUSION2025"
+   uv run python -m ipykernel install --user --name=jupyter-uv-env --display-name "UiPathCodedAgents"
    ```
 
 4. **Environment Variables** (`.env` file - optiona, you will create it in the `hello-world.ipynb` if needed):
