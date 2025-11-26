@@ -9,8 +9,11 @@ Before getting started, check the [PRERESUISITES.md](./PRERESUISITES.md).
 In case of utf-8 error:
 
 Get-Content .env | Set-Content -Encoding utf8 .env.fixed
+
 Remove-Item .env
+
 Rename-Item .env.fixed .env
+
 
 ##
 
