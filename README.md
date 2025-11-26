@@ -6,6 +6,14 @@ Before getting started, check the [PRERESUISITES.md](./PRERESUISITES.md).
 
 ## Getting Started
 
+In case of utf-8 error:
+
+Get-Content .env | Set-Content -Encoding utf8 .env.fixed
+Remove-Item .env
+Rename-Item .env.fixed .env
+
+##
+
 :warning: ***Go through thesese seteps before before the lab if you plan to follow along using the jupyter notebook on your own device.***
 
 1. **Clone the repository**:
