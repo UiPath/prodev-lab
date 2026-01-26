@@ -3,7 +3,8 @@ from langgraph.graph import END, START, StateGraph
 from pydantic import BaseModel
 from uipath_langchain.retrievers import ContextGroundingRetriever
 from langchain_core.documents import Document
-from uipath.models import InvokeProcess, IngestionInProgressException
+from uipath.platform.common import InvokeProcess
+from uipath.platform.errors import IngestionInProgressException
 import httpx
 from uipath_langchain.chat.models import UiPathAzureChatOpenAI
 from langchain_openai import ChatOpenAI

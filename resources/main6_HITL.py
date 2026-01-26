@@ -3,13 +3,14 @@ from langgraph.graph import END, START, StateGraph
 from pydantic import BaseModel, Field
 from uipath_langchain.retrievers import ContextGroundingRetriever
 from langchain_core.documents import Document
-from uipath.models import InvokeProcess, IngestionInProgressException
+from uipath.platform.common import InvokeProcess
+from uipath.platform.errors import IngestionInProgressException
 import httpx
 from uipath_langchain.chat.models import UiPathAzureChatOpenAI
 from langchain_openai import ChatOpenAI
 import logging
 import time
-from uipath.models import CreateAction
+from uipath.platform.common import CreateTask
 from langgraph.types import interrupt
 from typing import Literal
 
@@ -180,13 +181,12 @@ async def supervisor_node(state: GraphState) -> GraphState:
     human_feedback = None
 
     if result["confidence"] < 99:
-        action_data = interrupt(CreateAction(app_name="SimpleApprovalApp",
+        action_data = interrupt(CreateTask(app_name="SimpleApprovalApp",
                                              title="Action Required: Review classification",
                                              data={
                                                  "Content": f"I classified the question '{state.question}' \n as {result['category']} \n Is this ok? My confidence score is only {result['confidence']}"},
                                              app_folder_path="Shared/ApprovalApp",
-                                             assignee="eusebiu.jecan@uipath.com",
-                                             app_version=4
+                                             assignee="eusebiu.jecan@uipath.com"
                                              ))
         if not bool(action_data["Approved"]):
             human_feedback = action_data["Comment"]
