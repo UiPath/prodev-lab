@@ -46,9 +46,9 @@ Rename-Item .env.fixed .env
    There are multiple ways of setting up the jupyter kernel. If you are using this method, make sure you restart `cursor` after creating the jupyter kernel.
  
    ```bash
-   uv init -p 3.11
-   uv add ipykernel jupyter
-   uv run python -m ipykernel install --user --name=jupyter-uv-env --display-name "UiPathCodedAgents"
+   !py -m venv .venv
+   !.venv\Scripts\pip install ipykernel jupyter
+   !.venv\Scripts\python -m ipykernel install --user --name=jupyter-uv-env --display-name "WellsFargoLab"
    ```
 
 4. **Environment Variables** (`.env` file - optiona, you will create it in the `hello-world.ipynb` if needed):
@@ -56,7 +56,6 @@ Rename-Item .env.fixed .env
    ```bash
    echo "
    UIPATH_FOLDER_PATH=Payments  # or your specific folder
-   ANTHROPIC_API_KEY=your-anthropic-api-key
    " >> .env
    ```
 
