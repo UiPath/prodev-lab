@@ -1,4 +1,3 @@
-# from langchain_anthropic import ChatAnthropic
 from langgraph.graph import END, START, StateGraph
 from pydantic import BaseModel, Field
 from uipath_langchain.retrievers import ContextGroundingRetriever
@@ -139,7 +138,7 @@ def is_valid_code(code: str | None) -> bool:
 async def policy_node(state: GraphState) -> GraphOutput:
     retriever = ContextGroundingRetriever(
         index_name="company-policy-index",
-        folder_path="Shared",
+        folder_path="WellsFargoCodedAgents",
         number_of_results=100,
     )
     try:
@@ -185,7 +184,7 @@ async def supervisor_node(state: GraphState) -> GraphState:
                                              title="Action Required: Review classification",
                                              data={
                                                  "Content": f"I classified the question '{state.question}' \n as {result['category']} \n Is this ok? My confidence score is only {result['confidence']}"},
-                                             app_folder_path="Shared/ApprovalApp",
+                                             app_folder_path="WellsFargoCodedAgents/wf-hitl-app",
                                              assignee="eusebiu.jecan@uipath.com"
                                              ))
         if not bool(action_data["Approved"]):
@@ -209,7 +208,7 @@ async def procurement_node(state: GraphState) -> GraphOutput:
 
     retriever = ContextGroundingRetriever(
         index_name="procurement-index",
-        folder_path="Shared",
+        folder_path="WellsFargoCodedAgents",
         number_of_results=100,
     )
     try:

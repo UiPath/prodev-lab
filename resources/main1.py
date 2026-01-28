@@ -1,4 +1,3 @@
-from langchain_anthropic import ChatAnthropic
 from langgraph.graph import END, START, MessagesState, StateGraph
 from langgraph.prebuilt import create_react_agent
 from pydantic import BaseModel
@@ -88,7 +87,7 @@ async def get_context_data_async(retriever: ContextGroundingRetriever, question:
 async def policy_node(state: GraphInput) -> GraphOutput:
     retriever = ContextGroundingRetriever(
                 index_name="company-policy-index",
-                folder_path="Shared",
+                folder_path="WellsFargoCodedAgents",
                 number_of_results=100,
             )
     try:

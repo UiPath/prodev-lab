@@ -1,4 +1,3 @@
-from langchain_anthropic import ChatAnthropic
 from langgraph.graph import END, START, StateGraph
 from pydantic import BaseModel
 from uipath_langchain.retrievers import ContextGroundingRetriever
@@ -91,7 +90,7 @@ class GraphOutput(BaseModel):
 async def policy_node(state: GraphState) -> GraphOutput:
     retriever = ContextGroundingRetriever(
                 index_name="company-policy-index",
-                folder_path="Shared",
+                folder_path="WellsFargoCodedAgents",
                 number_of_results=100,
             )
     try:
@@ -145,7 +144,7 @@ async def procurement_node(state: GraphState) -> GraphOutput:
     """Procurement specialized agent (initially copied from policy)."""
     retriever = ContextGroundingRetriever(
                 index_name="procurement-index",
-                folder_path="Shared",
+                folder_path="WellsFargoCodedAgents",
                 number_of_results=100,
             )
     try:
